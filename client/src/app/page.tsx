@@ -1,7 +1,8 @@
-import Image from "next/image";
 
 export default function Home() {
   return (
-  <div className="bg-red">App</div>
+    <div className="bg-red">
+      this is chat application 
+  </div>
   );
 }
