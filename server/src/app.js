@@ -4,11 +4,12 @@ const globalErrorHandler = require("./utils/globalErrorHandler");
 require("dotenv").config();
 const app = express();
 const authRoutes = require('./routes/authentication');
-
+const messageRoutes = require("./routes/message")
 applyMiddleware(app);
 
 
 app.use(authRoutes)
+app.use(messageRoutes)
 
 
 app.get("/health", (req, res) => {
