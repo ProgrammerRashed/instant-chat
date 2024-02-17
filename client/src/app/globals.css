@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-
-
-:root {
-  --test: #333
-}
+  :root {
+    --test: #333
+  }
 
 }
