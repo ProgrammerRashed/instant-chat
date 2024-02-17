@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --test: #333
+    --test: #333;
+    --darkBlue: #121c22;
   }
-
 }
