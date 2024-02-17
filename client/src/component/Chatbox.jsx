@@ -54,7 +54,7 @@ const ChatBox = () => {
             type={"text"}
             replyButton="true"
             title={"Polash"}
-            text="What are you doing..Jon?"
+            text="What are you doing..John?"
           />
           <MessageBox
             position={"right"}
