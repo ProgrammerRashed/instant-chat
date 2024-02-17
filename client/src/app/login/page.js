@@ -22,11 +22,7 @@ const LoginPage = () => {
     .then(res => res.json())
     .then(data => {
       if(data.insertedId){
-        Swal.fire({
-          title: "Congratulation",
-          text: "You successfully Logged In!",
-          icon: "success"
-        });
+        router.push('/');
         
       }
       else {
@@ -37,14 +33,7 @@ const LoginPage = () => {
         });
       }
     })
-    .catch(error => {
-      console.error('Error:', error);
-      Swal.fire({
-        title: "Error",
-        text: "An unexpected error occurred.",
-        icon: "error"
-      });
-    });
+    
   };
 
 

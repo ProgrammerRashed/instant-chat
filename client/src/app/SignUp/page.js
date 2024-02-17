@@ -44,11 +44,7 @@ const signup = () => {
         .then(res => res.json())
         .then(data => {
           if(data.insertedId){
-            Swal.fire({
-              title: "Congratulation",
-              text: "You successfully Create a Account!",
-              icon: "success"
-            });
+            router.push('/login');
             
           }
         })
