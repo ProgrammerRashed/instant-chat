@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --light: #333;
-  --light-red: #989766
+@layer base {
+  :root {
+    --test: #333;
+    --darkBlue: #121c22;
+  }
 }

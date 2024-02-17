@@ -3,14 +3,13 @@ const applyMiddleware = require("./middlewares");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 4000;
-
+const authRoutes = require('./routes/authentication');
 
 applyMiddleware(app);
 
 
-// app.use(authRoutes)
-// app.use(saveUserData)
+app.use(authRoutes)
+
 
 app.get("/health", (req, res) => {
   res.send("server is running....");
