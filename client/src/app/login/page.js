@@ -1,6 +1,8 @@
 "use client"
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const LoginPage = () => {
@@ -29,16 +31,39 @@ const LoginPage = () => {
     .then(data => {
       console.log(data)
       if(data.success){
+        toast.success("LogIn successful!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         router.push('/');
         
+      }else if(data.status === 400){
+        toast.error("User Doesn't Exist!!", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        toast.error("Please Check your Email/Password", {
+          position: "top-right",
+          autoClose: 3500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      
       }
       
     })
     
   };
-
-
-
 
 
   return (
@@ -95,6 +120,7 @@ const LoginPage = () => {
             </form>
           </div>
           <div className="w-full mt-12 flex justify-center">
+         <span className=' mt-2 mr-1.5'> Don't have an account?</span>
           <Link href="/SignUp">
            <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
              
@@ -104,6 +130,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   </>
   )
