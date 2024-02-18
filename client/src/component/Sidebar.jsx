@@ -1,27 +1,27 @@
 "use client";
-import { FaRegEdit } from "react-icons/fa";
-import { FaRegCircleUser, FaRegUser } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import { getActiveUser } from "@/utils/getActiveUser";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
-
+import { FaRegEdit } from "react-icons/fa";
 import profile from "../../public/profile.png";
 import Image from "next/image";
-import "./scroll.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const Sidebar = () => {
-  const [currentUser, SetCurrentUser] = useState([]);
-  console.log(currentUser);
-  useEffect(() => {
-    const fetchData = async () => {
-    console.log('djhbdjhbwdjbhj')
-        const response = await axios.get('http://localhost:4000/api/user');
-        console.log(response); // This will log the data received from the server
-    
-    };
+  const [currentUser, setCurrentUser] = useState(null);
 
-    fetchData();
-  },[])
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const data = await getActiveUser();
+        console.log(data);
+        setCurrentUser(data);
+      } catch (error) {
+        console.error("Error fetching current user:", error);
+      }
+    };
+    fetchCurrentUser();
+  }, []);
+  console.log("activeUser", currentUser);
 
   return (
     <div className="bg-darkBlue scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">

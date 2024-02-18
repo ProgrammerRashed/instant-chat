@@ -15,10 +15,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="grid grid-cols-1 lg:grid-cols-4">
           
-          <div className={pathNames == "/login" || "/signup" ? "hidden":"col-span-1"}>
+          <div className="col-span-1">
             <Sidebar />
           </div>
-          <div className={pathNames == "/login" || "/signup" ? "col-span-4":"col-span-3"}>{children}</div>
+          <div className="col-span-3">{children}</div>
         </div>
       </body>
     </html>
