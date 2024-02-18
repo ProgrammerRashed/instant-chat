@@ -4,10 +4,10 @@ const User = require("../../../models/User");
 
 const doLogin = async (req, res, next) => {
   try {
-    const user = req.body;
+    const bodyUser = req.body;
 
     const dbUser = await User.findOne({
-      email: user.email,
+      email: bodyUser.email,
     });
 
     if (!dbUser) {
@@ -18,7 +18,7 @@ const doLogin = async (req, res, next) => {
       return;
     }
     const validPassword = await bcryptjs.compare(
-      user.password,
+      bodyUser.password,
       dbUser.password
     );
     if (!validPassword) {
@@ -28,10 +28,18 @@ const doLogin = async (req, res, next) => {
       });
       return;
     }
+
+    const user = {
+      id: dbUser._id.toString(),
+      name:dbUser.name,
+      email:dbUser.email,
+      image: dbUser.image
+    }
+    
     const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
       expiresIn: "24h",
     });
-
+    console.log(token)
     res
       .cookie("token", token, {
         httpOnly: true,
