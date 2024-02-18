@@ -6,8 +6,11 @@ import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import profile from "../../public/profile.png";
 import Image from "next/image";
 import "./scroll.css";
+import { useEffect, useState } from "react";
 
 const Sidebar = () => {
+
+
   return (
     <div className="bg-darkBlue scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">
       {/* headers */}
