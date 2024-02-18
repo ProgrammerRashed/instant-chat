@@ -5,7 +5,7 @@ const ConversationSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   }],
-  participants: [{
+  messages: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Message",
     default: []
@@ -13,6 +13,6 @@ const ConversationSchema = new Schema({
   
 }, {timestamps: true});
 
-const Conversation = model("Message", Conversation);
+const Conversation = model("Conversation", ConversationSchema);
 
 module.exports = Conversation;
