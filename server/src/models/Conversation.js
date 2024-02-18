@@ -2,16 +2,15 @@ const { model, Schema, default: mongoose } = require("mongoose");
 
 const ConversationSchema = new Schema({
   participants: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
   }],
   messages: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Message",
-    default: []
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Message"
   }],
-  
-}, {timestamps: true});
+}, { timestamps: true });
+
 
 const Conversation = model("Conversation", ConversationSchema);
 

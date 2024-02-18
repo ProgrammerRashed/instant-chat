@@ -8,7 +8,13 @@ const getMessages = async (req, res, next) => {
 
     let conversation = await Conversation.findOne({
       participants: { $all: [senderId, userToChat] },
-    }).populate("messages");
+    }).populate({
+      path: 'messages',
+      populate: {
+          path: 'senderId receiverId',
+          select: 'name email',
+      },
+  });
 
     
     res.status(200).send(conversation.messages)
