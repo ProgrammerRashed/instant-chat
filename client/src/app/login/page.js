@@ -7,7 +7,7 @@ const LoginPage = () => {
   const router = useRouter();
 
 
-  const handleLogin = e =>{
+  const handleLogin = async (e) =>{
     e.preventDefault();
    const form = e.target;
    
@@ -17,12 +17,13 @@ const LoginPage = () => {
   };
   console.log(Item)
 
-    fetch('http://localhost:4000/login', {
+    await fetch('http://localhost:4000/login', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(Item)
+      body: JSON.stringify(Item),
+      credentials: 'include'
     })
     .then(res => res.json())
     .then(data => {

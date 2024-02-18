@@ -4,5 +4,4 @@ const verifyToken = require("../../middlewares/verifyToken")
 const router = require("express").Router()
 router.get("/api/messages/:id",verifyToken, getMessages)
 router.post("/api/send/:id", verifyToken, sendMessage)
-const router = require("express").Router()
 module.exports = router
