@@ -1,10 +1,8 @@
-"use client";
 import { IoIosCall } from "react-icons/io";
 import { IoVideocam } from "react-icons/io5";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { FaRegImage } from "react-icons/fa6";
 import "react-chat-elements/dist/main.css";
-import { MessageBox } from "react-chat-elements";
 
 const ChatBox = () => {
   return (
@@ -34,96 +32,8 @@ const ChatBox = () => {
         </div>
 
         <div className="overflow-y-auto px-5 py-3 text-slate-700">
-          <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={"Polash Ahmed"}
-            text="Hello John How Are Doing"
-          />
-          <MessageBox
-            position={"right"}
-            type={"text"}
-            titleColor="#0B1114"
-            className=""
-            title={"John Doe"}
-            text="Hey,Im doing well.. what about you..?"
-          />
-          <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={"Polash Ahmed"}
-            text="What are you doing..Jon?"
-          />
-          <MessageBox
-            position={"right"}
-            type={"text"}
-            titleColor="#0B1114"
-            className=""
-            title={"John Doe"}
-            text="Im watching TV, And You?"
-          />
-          <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={"Polash Ahmed"}
-            text="Im laying on the bed."
-          />
-          <MessageBox
-            position={"right"}
-            type={"text"}
-            titleColor="#0B1114"
-            className=""
-            title={"John Doe"}
-            text="okay talk you later?"
-          />
-          <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={"Polash Ahmed"}
-            text="Hello John How Are Doing"
-          />
-          <MessageBox
-            position={"right"}
-            type={"text"}
-            titleColor="#0B1114"
-            className=""
-            title={"John Doe"}
-            text="Hey,Im doing well.. what about you..?"
-          />
-          <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={"Polash Ahmed"}
-            text="What are you doing.?"
-          />
-          <MessageBox
-            position={"right"}
-            type={"text"}
-            titleColor="#0B1114"
-            className=""
-            title={"John Doe"}
-            text="Im watching TV, And You?"
-          />
-          <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={"Polash Ahmed"}
-            text="Im laying on the bed."
-          />
-          <MessageBox
-            position={"right"}
-            type={"text"}
-            titleColor="#0B1114"
-            className=""
-            title={"John Doe"}
-            text="okay talk you later?"
-          />
+          
+          
         </div>
 
         <form className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
