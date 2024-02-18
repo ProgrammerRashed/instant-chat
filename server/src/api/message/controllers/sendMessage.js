@@ -12,23 +12,23 @@ const sendMessage = async (req, res, next) => {
     });
 
     if (!conversation) {
-      conversation = Conversation.create({
+      conversation = await Conversation.create({ 
         participants: [senderId, receiverId],
       });
     }
 
-    const newMassage = Message({
+    const newMessage = new Message({
       senderId,
       receiverId,
       message,
     });
 
-    if (newMassage) {
-      conversation.messages.push(newMassage._id);
-    }
+    await newMessage.save(); 
 
-    await Promise.all([conversation.save(), newMassage.save()])
-    res.status(200).send(newMassage)
+    conversation.messages.push(newMessage._id); 
+    await conversation.save(); 
+
+    res.status(200).send(newMessage); 
   } catch (err) {
     next(err);
   }
