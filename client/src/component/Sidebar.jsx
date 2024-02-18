@@ -7,9 +7,21 @@ import profile from "../../public/profile.png";
 import Image from "next/image";
 import "./scroll.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Sidebar = () => {
+  const [currentUser, SetCurrentUser] = useState([]);
+  console.log(currentUser);
+  useEffect(() => {
+    const fetchData = async () => {
+    console.log('djhbdjhbwdjbhj')
+        const response = await axios.get('http://localhost:4000/api/user');
+        console.log(response); // This will log the data received from the server
+    
+    };
 
+    fetchData();
+  },[])
 
   return (
     <div className="bg-darkBlue scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">
