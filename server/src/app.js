@@ -14,6 +14,7 @@ app.use(messageRoutes)
 app.use(userRoutes)
 
 
+
 app.get("/health", (req, res) => {
   res.send("server is running....");
 });
