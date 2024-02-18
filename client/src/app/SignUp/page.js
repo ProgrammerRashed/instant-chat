@@ -1,5 +1,6 @@
 "use client"
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 
 
@@ -7,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 const image_hosting_api = 'https://api.imgbb.com/1/upload?key=85c8731da646b31b05291de72ca2b2ad';
 const signup = () => {
+  const router = useRouter();
   const { register, handleSubmit, reset } = useForm();
  
 
@@ -28,9 +30,10 @@ const signup = () => {
       if (responseData.success) {
      
         const Item = {
-          name: data.name,
+         
           email: data.email,
           password: data.password,
+          name: data.name,
           image: responseData.data.display_url
         };
         console.log(Item);
@@ -43,7 +46,8 @@ const signup = () => {
         })
         .then(res => res.json())
         .then(data => {
-          if(data.insertedId){
+          console.log(data)
+          if(data.success){
             router.push('/login');
             
           }
