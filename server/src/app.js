@@ -1,14 +1,18 @@
-const express = require("express");
 const applyMiddleware = require("./middlewares");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 require("dotenv").config();
-const app = express();
+const express = require("express")
 const authRoutes = require('./routes/authentication');
-
+const messageRoutes = require("./routes/message")
+const userRoutes = require("./routes/users");
+const app = express();
 applyMiddleware(app);
 
 
 app.use(authRoutes)
+app.use(messageRoutes)
+app.use(userRoutes)
+
 
 
 app.get("/health", (req, res) => {

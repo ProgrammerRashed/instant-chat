@@ -23,7 +23,7 @@ const doSignup = async (req, res, next) => {
 
 
     const newUser = await User.create({
-      name: user.email,
+      name: user.name,
       image: user.image,
       email: user.email,
       password: hashedPass,
