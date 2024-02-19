@@ -76,7 +76,9 @@ const signup = () => {
               pauseOnHover: true,
               draggable: true,
             });
+               
             router.push('/login');
+            
             
           }else if(data.status === 400){
             
@@ -134,7 +136,7 @@ const signup = () => {
                     </label>
                     <input
             
-                    type="text"
+                    type="email"
                    
                     placeholder="@email"
                     {...register("email", { required: "Email Address is required" })}
@@ -145,7 +147,7 @@ const signup = () => {
                 
                 </div>
                 <div>
-                    <label htmlFor="email" className="block text-gray-800 font-bold">
+                    <label htmlFor="password" className="block text-gray-800 font-bold">
                     Password
                     </label>
                     <input
@@ -160,7 +162,7 @@ const signup = () => {
                 
                     </div>
                             <div>
-                            <label htmlFor="email" className="block text-gray-800 mb-3 font-bold">
+                            <label htmlFor="image" className="block text-gray-800 mb-3 font-bold">
                                     Image
                                         </label>
                                     <div className="flex items-center space-x-6">
@@ -195,7 +197,6 @@ const signup = () => {
           </div>
         </div>
       </div>
-      <ToastContainer></ToastContainer>
     </div>
   </>
   
