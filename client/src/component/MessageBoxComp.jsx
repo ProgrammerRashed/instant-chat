@@ -1,19 +1,22 @@
-"use client"
+"use client";
 
-import { MessageBox } from "react-chat-elements"
+import { MessageBox } from "react-chat-elements";
 
-const MessageBoxComp = ({title, text}) => {
+const MessageBoxComp = ({ title, text, avatar,date,alt,replyButton }) => {
   return (
-    <div>
-       <MessageBox
-            position={"left"}
-            type={"text"}
-            replyButton="true"
-            title={title}
-            text={text}
-          />
+    <div className=" tex-white">
+      <MessageBox
+        position={"left"}
+        type={"text"}       
+        title={title}
+        text={text}
+        avatar={avatar}
+        date={date}
+        alt={alt}
+        replyButton={replyButton}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default MessageBoxComp
+export default MessageBoxComp;
