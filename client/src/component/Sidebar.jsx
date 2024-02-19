@@ -7,8 +7,10 @@ import profile from "../../public/profile.png";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from 'next/navigation';
 
 const Sidebar = () => {
+  const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -47,6 +49,7 @@ await fetch('http://localhost:4000/logout', {
       draggable: true,
     });
     location.reload();
+    router.push('/');
   }
  
 })
