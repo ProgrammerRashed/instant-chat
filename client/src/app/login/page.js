@@ -31,16 +31,19 @@ const LoginPage = () => {
     .then(data => {
       console.log(data)
       if(data.success){
-        toast.success("LogIn successful!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+       
+        location.reload();
         router.push('/');
-        
+      
+          toast.success("LogIn successful!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+     
       }else if(data.status === 400){
         toast.error("User Doesn't Exist!!", {
           position: "top-right",
