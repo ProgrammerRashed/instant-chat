@@ -39,7 +39,6 @@ const ChatBox = () => {
             title="Polash"
             text="Hello, From Polash"
             replyButton={true}
-           
             alt={"profile"}
             date={new Date()}
             avatar={
@@ -76,7 +75,7 @@ const ChatBox = () => {
               />
 
               <div className="absolute cursor-pointer right-3 bottom-2">
-                <BsEmojiSmile className="text-[22px] text-white"/>
+                <BsEmojiSmile className="text-[22px] text-white" />
               </div>
             </div>
 
