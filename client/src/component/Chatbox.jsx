@@ -36,8 +36,8 @@ const ChatBox = () => {
 
         <div className="overflow-y-auto px-5 py-3 text-slate-700">
           <MessageBoxComp
-            title="Polash"
-            text="Hello, From Polash"
+            title="Rashed"
+            text="Hello, From Rashed"
             replyButton={true}
             alt={"profile"}
             date={new Date()}
