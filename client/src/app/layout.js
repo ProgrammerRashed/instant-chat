@@ -4,6 +4,7 @@ import "./globals.css";
 import Sidebar from "@/component/Sidebar";
 import { usePathname } from "next/navigation";
 import { DataContextProvider } from "@/context/DataContext";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({ children }) {
           <div className="col-span-3">{children}</div>
         </div>
         </div>
+        
         </DataContextProvider>
+        <ToastContainer></ToastContainer>
       </body>
     </html>
   );
