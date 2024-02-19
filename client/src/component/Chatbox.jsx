@@ -3,6 +3,9 @@ import { IoVideocam } from "react-icons/io5";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { FaRegImage } from "react-icons/fa6";
 import "react-chat-elements/dist/main.css";
+import { BsEmojiSmile } from "react-icons/bs";
+
+import MessageBoxComp from "./MessageBoxComp";
 
 const ChatBox = () => {
   return (
@@ -32,8 +35,17 @@ const ChatBox = () => {
         </div>
 
         <div className="overflow-y-auto px-5 py-3 text-slate-700">
-          
-          
+          <MessageBoxComp
+            title="Polash"
+            text="Hello, From Polash"
+            replyButton={true}
+           
+            alt={"profile"}
+            date={new Date()}
+            avatar={
+              "https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+            }
+          />
         </div>
 
         <form className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
@@ -55,13 +67,17 @@ const ChatBox = () => {
 
             {/* content */}
 
-            <div className="">
+            <div className="relative">
               <input
                 type="text"
                 name="textField"
                 placeholder="write message"
                 className="text-sm rounded-lg outline-none block w-[67vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"
               />
+
+              <div className="absolute cursor-pointer right-3 bottom-2">
+                <BsEmojiSmile className="text-[22px] text-white"/>
+              </div>
             </div>
 
             <div>
