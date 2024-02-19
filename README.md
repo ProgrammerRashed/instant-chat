@@ -186,3 +186,9 @@ let user = {
 - **Middleware Implementation**: Implemented middleware to protect routes and enhance security.
 - **Layout Enhancement**: Conditionally rendered the login and SignUp pages without the navigation or other components for improved user experience.
 - **UI Bug Fixes**: Addressed various UI bugs throughout the application for better usability.
+
+
+### Rime
+
+- **Implemen SignUp and LogIn**: Implemented SignUp and LogIn page UI and fanction.
+- **SignUp & LogIn Errors**: Implemented SignUp and LogIn page error handling alert.
