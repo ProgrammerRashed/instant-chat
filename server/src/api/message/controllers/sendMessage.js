@@ -1,5 +1,6 @@
 const Conversation = require("../../../models/Conversation");
 const Message = require("../../../models/Message");
+const { getReceiverSocketId, io } = require("../../../socket/socket");
 
 const sendMessage = async (req, res, next) => {
   try {
@@ -12,7 +13,7 @@ const sendMessage = async (req, res, next) => {
     });
 
     if (!conversation) {
-      conversation = await Conversation.create({ 
+      conversation = await Conversation.create({
         participants: [senderId, receiverId],
       });
     }
@@ -23,12 +24,17 @@ const sendMessage = async (req, res, next) => {
       message,
     });
 
-    await newMessage.save(); 
+    await newMessage.save();
 
-    conversation.messages.push(newMessage._id); 
-    await conversation.save(); 
-
-    res.status(200).send(newMessage); 
+    conversation.messages.push(newMessage._id);
+    await conversation.save();
+    // SOCKET IO FUNCTIONALITY WILL GO HERE
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      // io.to(<socket_id>).emit() used to send events to specific client
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
+    res.status(200).send(newMessage);
   } catch (err) {
     next(err);
   }

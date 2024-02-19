@@ -1,11 +1,11 @@
-const express = require("express");
 const applyMiddleware = require("./middlewares");
 const globalErrorHandler = require("./utils/globalErrorHandler");
 require("dotenv").config();
-const app = express();
+
 const authRoutes = require('./routes/authentication');
 const messageRoutes = require("./routes/message")
-const userRoutes = require("./routes/users")
+const userRoutes = require("./routes/users");
+const { app } = require("./socket/socket");
 applyMiddleware(app);
 
 
