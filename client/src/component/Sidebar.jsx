@@ -54,7 +54,12 @@ const handleLogOut = async(data) => {
   return (
     <>
       {loading ? (
-        <div>Loading</div>
+        <div className="flex justify-center">
+        <div>
+        <div className="w-6 h-6 rounded-full absolute border-4 border-solid border-gray-200" />
+         <div className="w-6 h-6 rounded-full animate-spin absolute  border-4 border-solid border-green-500 border-t-transparent"></div>
+        </div>
+       </div>
       ) : (
         <div className="bg-darkBlue scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">
           {/* headers */}
@@ -111,7 +116,7 @@ const handleLogOut = async(data) => {
 
           <div className="mt- px-2">
             <ul className="flex flex-col justify-start mb-5">
-              {sidebarFriends.length && sidebarFriends.map((item)=> (
+              {sidebarFriends.length ? sidebarFriends.map((item)=> (
                 <li
                   key={item._id}
                   className="hover:bg-slate-800 border-b border-slate-700 rounded-md duration-300 py-3 px-2"
@@ -139,7 +144,13 @@ const handleLogOut = async(data) => {
                     </div>
                   </div>
                 </li>
-              ))}
+              )):<div className="flex justify-center">
+             <div>
+             <div className="w-6 h-6 rounded-full absolute border-4 border-solid border-gray-200" />
+              <div className="w-6 h-6 rounded-full animate-spin absolute  border-4 border-solid border-green-500 border-t-transparent"></div>
+             </div>
+            </div>
+              }
             </ul>
           </div>
         </div>
