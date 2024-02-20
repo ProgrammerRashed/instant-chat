@@ -2,7 +2,7 @@
 
 const EmptyChatBox = () => {
   return (
-    <div className="bg-slate-800 h-[100vh]">
+    <div className="">
       <div>No Chat Available</div>
     </div>
   )
