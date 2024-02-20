@@ -19,7 +19,7 @@ const Sidebar = () => {
 
     fetchCurrentUser();
   }, []);
-console.log(sidebarFriends)
+  console.log(sidebarFriends);
   return (
     <>
       {loading ? (
