@@ -56,9 +56,11 @@ const Sidebar = () => {
   return (
     <>
       {loading ? (
-        <div className="relative">
-        <div className="w-12 h-12 rounded-full absolute border-8 border-solid border-gray-200" />
-        <div className="w-12 h-12 rounded-full animate-spin absolute  border-8 border-solid border-green-500 border-t-transparent"></div>
+        <div className="flex justify-center">
+        <div>
+        <div className="w-6 h-6 rounded-full absolute border-4 border-solid border-gray-200" />
+        <div className="w-6 h-6 rounded-full animate-spin absolute  border-4 border-solid border-green-500 border-t-transparent"></div>
+        </div>
       </div>
       ) : (
         <div className="bg-darkBlue scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">
