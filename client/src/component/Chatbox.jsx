@@ -9,11 +9,25 @@ import { BsEmojiSmile } from "react-icons/bs";
 import MessageBoxComp from "./MessageBoxComp";
 import EmptyChatBox from "./EmptyChatBox";
 import useConversation from "@/hooks/useConversation";
+import { useState } from "react";
+import EmojiPicker from "emoji-picker-react";
 
 const ChatBox = () => {
   const { selectedConversation } = useConversation();
+  const [open, setOpen] = useState(false);
 
   console.log("onChatBox", selectedConversation);
+
+  const handleEmojiOpen = () => {
+    setOpen(!open);
+  };
+
+  const [inputStr, setInputStr] = useState("");
+  console.log(inputStr);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setInputStr((prevInput) => prevInput + emojiObject.emoji);
+  };
 
   return (
     <div className="z-[999]">
@@ -26,7 +40,9 @@ const ChatBox = () => {
                 src={selectedConversation.image}
                 alt=""
               />
-              <h1 className="text-xl text-white font-semibold">{selectedConversation.name}</h1>
+              <h1 className="text-xl text-white font-semibold">
+                {selectedConversation.name}
+              </h1>
             </div>
 
             <div className="flex cursor-pointer gap-3 items-center">
@@ -79,10 +95,15 @@ const ChatBox = () => {
                   type="text"
                   name="textField"
                   placeholder="write message"
+                  value={inputStr}
+                  onChange={(e) => setInputStr(e.target.value)}
                   className="text-sm rounded-lg outline-none block w-[67vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"
                 />
 
-                <div className="absolute cursor-pointer right-3 bottom-2">
+                <div
+                  onClick={handleEmojiOpen}
+                  className="absolute cursor-pointer right-3 bottom-2"
+                >
                   <BsEmojiSmile className="text-[22px] text-white" />
                 </div>
               </div>
@@ -97,6 +118,12 @@ const ChatBox = () => {
               </div>
             </div>
           </form>
+
+          {open && (
+            <div className="absolute bottom-16 right-6">
+              <EmojiPicker onEmojiClick={onEmojiClick} />
+            </div>
+          )}
         </div>
       ) : (
         <div>

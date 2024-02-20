@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import useConversation from "@/hooks/useConversation";
 import "./scroll.css";
 import { IoLogOutOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -73,7 +74,10 @@ const Sidebar = () => {
           {/* headers */}
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
-              <div className="flex cursor-pointer items-center gap-2">
+              <Link
+                href="/profile"
+                className="flex cursor-pointer items-center gap-2"
+              >
                 <Image
                   width={50}
                   height={50}
@@ -85,7 +89,7 @@ const Sidebar = () => {
                   alt="current user image"
                 />
                 <h1 className="text-xl font-semibold">{currentUser?.name}</h1>
-              </div>
+              </Link>
 
               <div className="flex items-center gap-2">
                 <div className="h-[32px]  w-[32px] rounded-md">
@@ -180,7 +184,7 @@ const Sidebar = () => {
                           alt="user image"
                         />
 
-                        <div className="w-[550px]">
+                        <div className="w-[550px] text-left">
                           <h1 className="font-medium">{item.name}</h1>
                           <p className="text-[13px] text-slate-300">
                             Hello Dear, How Are You..?

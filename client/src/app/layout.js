@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/component/Sidebar";
@@ -9,27 +9,23 @@ import { SocketContextProvider } from "@/context/SocketContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
 export default function RootLayout({ children }) {
-  const pathNames = usePathname()
-
+  const pathNames = usePathname();
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <DataContextProvider>
           <SocketContextProvider>
-        <div className="app">
-
-        <div className="grid grid-cols-1 lg:grid-cols-4">
-          
-          <div className="col-span-1">
-            <Sidebar />
-          </div>
-          <div className="col-span-3">{children}</div>
-        </div>
-        </div>
-        </SocketContextProvider>
+            <div className="app">
+              <div className="grid grid-cols-1 lg:grid-cols-4">
+                <div className="col-span-1">
+                  <Sidebar />
+                </div>
+                <div className="col-span-3">{children}</div>
+              </div>
+            </div>
+          </SocketContextProvider>
         </DataContextProvider>
         <ToastContainer></ToastContainer>
       </body>
