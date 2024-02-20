@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useConversation from "@/hooks/useConversation";
 
+
 const Sidebar = () => {
   const [sidebarFriends, setSidebarFriends] = useState([]);
   const { loading, currentUser } = useDataContext();
@@ -55,12 +56,17 @@ const Sidebar = () => {
   return (
     <>
       {loading ? (
-        <div>Loading</div>
+        <div className="relative">
+        <div className="w-12 h-12 rounded-full absolute border-8 border-solid border-gray-200" />
+        <div className="w-12 h-12 rounded-full animate-spin absolute  border-8 border-solid border-green-500 border-t-transparent"></div>
+      </div>
       ) : (
         <div className="bg-darkBlue scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">
           {/* headers */}
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
+          
+
               <div className="flex cursor-pointer items-center gap-2">
                 <img
                   className="w-[50px] h-[50px] rounded-full"
@@ -72,6 +78,7 @@ const Sidebar = () => {
                 />
                 <h1 className="text-xl font-semibold">{currentUser?.name}</h1>
               </div>
+              
 
               <div className="flex items-center gap-2">
                 <div className="h-[32px] w-[32px] rounded-md">
@@ -115,7 +122,7 @@ const Sidebar = () => {
 
           <div className="mt- px-2">
             <ul className="flex flex-col justify-start mb-5">
-              {sidebarFriends.length &&
+              {sidebarFriends.length ?
                 sidebarFriends.map((item) => (
                   <button
                     key={item._id}
@@ -148,7 +155,14 @@ const Sidebar = () => {
                       </div>
                     </li>
                   </button>
-                ))}
+                )):<div className="flex justify-center">
+                <div>
+                <div className="w-6 h-6 rounded-full absolute border-4 border-solid border-gray-200" />
+                <div className="w-6 h-6 rounded-full animate-spin absolute  border-4 border-solid border-green-500 border-t-transparent"></div>
+                </div>
+              </div>
+                
+                }
             </ul>
           </div>
         </div>

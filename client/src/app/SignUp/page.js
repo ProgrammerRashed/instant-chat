@@ -106,7 +106,7 @@ const signup = () => {
   <>
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="absolute inset-0 bg-slate-700  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-5 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
        
@@ -117,7 +117,7 @@ const signup = () => {
             <div className="divide-y divide-gray-200 pt-5">
               <div className="py- text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
               <div>
-              <label htmlFor="name" className="block text-gray-800 font-bold">
+              <label htmlFor="text" className="block text-gray-800 font-bold">
                     Name
                 </label>
                 <input
@@ -171,13 +171,13 @@ const signup = () => {
                               type="file"
                                 {...register("image",  { required: true })}
       
-                              className="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
+                              className="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-slate-700  file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
                             />
                     </div>
                         </div>
 
                 <div className="relative top-8">
-                  <button className="bg-cyan-600 text-white rounded-md px-2 py-1">
+                  <button className="bg-slate-700  text-white rounded-md px-2 py-1">
                     Submit
                   </button>
                 </div>
