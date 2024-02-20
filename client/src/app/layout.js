@@ -5,6 +5,7 @@ import Sidebar from "@/component/Sidebar";
 import { usePathname } from "next/navigation";
 import { DataContextProvider } from "@/context/DataContext";
 import { ToastContainer } from "react-toastify";
+import { SocketContextProvider } from "@/context/SocketContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <DataContextProvider>
+          <SocketContextProvider>
         <div className="app">
 
         <div className="grid grid-cols-1 lg:grid-cols-4">
@@ -27,7 +29,7 @@ export default function RootLayout({ children }) {
           <div className="col-span-3">{children}</div>
         </div>
         </div>
-        
+        </SocketContextProvider>
         </DataContextProvider>
         <ToastContainer></ToastContainer>
       </body>
