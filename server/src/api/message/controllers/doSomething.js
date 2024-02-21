@@ -1,6 +1,4 @@
-
-
-const doSomething = async (req, res, next) => {
+export const doSomething = async (req, res, next) => {
   try {
     console.log("got hit")
     return res.send({message: "Api Got Hit"})
@@ -9,4 +7,3 @@ const doSomething = async (req, res, next) => {
   }
 };
 
-module.exports = doSomething;

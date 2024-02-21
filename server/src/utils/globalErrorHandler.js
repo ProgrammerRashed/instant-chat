@@ -1,4 +1,4 @@
-const globalErrorHandler = (err, _req, res, _next) => {
+export const globalErrorHandler = (err, _req, res, _next) => {
   // format error
   res.status(err.status || 500).json({
     message: err.message,
@@ -6,4 +6,3 @@ const globalErrorHandler = (err, _req, res, _next) => {
   });
 };
 
-module.exports = globalErrorHandler;

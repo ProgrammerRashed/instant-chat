@@ -1,12 +1,12 @@
-const doLogin = require("../../api/authentication/controllers/doLogin")
-const doLogout = require("../../api/authentication/controllers/doLogout")
-const doSignup = require("../../api/authentication/controllers/doSignup")
+import express from "express";
+import { doSignup } from "../../api/authentication/controllers/doSignup.js";
+import { doLogin } from "../../api/authentication/controllers/doLogin.js";
+import { doLogout } from "../../api/authentication/controllers/doLogout.js";
+const router = express.Router();
 
-const router = require("express").Router()
+// Routes
+router.post("/signup", doSignup);
+router.post("/login", doLogin);
+router.post("/logout", doLogout);
 
-//Routes
-router.post("/signup", doSignup)
-router.post("/login", doLogin)
-router.post("/logout", doLogout)
-
-module.exports = router
+export default router;

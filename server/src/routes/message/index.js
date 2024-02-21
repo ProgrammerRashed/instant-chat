@@ -1,7 +1,10 @@
-const getMessages = require("../../api/message/controllers/getMessages")
-const sendMessage = require("../../api/message/controllers/sendMessage")
-const verifyToken = require("../../middlewares/verifyToken")
-const router = require("express").Router()
-router.get("/api/messages/:id",verifyToken, getMessages)
-router.post("/api/send/:id", verifyToken, sendMessage)
-module.exports = router
+import express from "express";
+import { verifyToken } from "../../middlewares/verifyToken.js";
+import { getMessages } from "../../api/message/controllers/getMessages.js";
+import { sendMessage } from "../../api/message/controllers/sendMessage.js";
+const router = express.Router();
+
+router.get("/api/messages/:id", verifyToken, getMessages);
+router.post("/api/send/:id", verifyToken, sendMessage);
+
+export default router;

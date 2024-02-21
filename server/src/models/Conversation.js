@@ -1,4 +1,6 @@
-const { model, Schema, default: mongoose } = require("mongoose");
+import mongoose from "mongoose";
+
+const { model, Schema } = mongoose;
 
 const ConversationSchema = new Schema({
   participants: [{
@@ -11,7 +13,6 @@ const ConversationSchema = new Schema({
   }],
 }, { timestamps: true });
 
-
 const Conversation = model("Conversation", ConversationSchema);
 
-module.exports = Conversation;
+export default Conversation;

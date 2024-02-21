@@ -1,10 +1,11 @@
-const getActiveUser = require("../../api/users/controllers/getActiveUser")
-const getAllFriends = require("../../api/users/controllers/getAllFriends")
-const verifyToken = require("../../middlewares/verifyToken")
+import express from "express";
+import { verifyToken } from "../../middlewares/verifyToken.js";
+import { getActiveUser } from "../../api/users/controllers/getActiveUser.js";
+import { getAllFriends } from "../../api/users/controllers/getAllFriends.js";
 
-const router = require("express").Router()
+const router = express.Router();
 
-router.get("/api/user", verifyToken, getActiveUser)
-router.get("/api/friends", verifyToken, getAllFriends)
+router.get("/api/user", verifyToken, getActiveUser);
+router.get("/api/friends", verifyToken, getAllFriends);
 
-module.exports = router
+export default router;

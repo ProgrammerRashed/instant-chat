@@ -1,4 +1,4 @@
-const doLogout = (req, res) => {
+export const doLogout = (req, res) => {
     res
       .clearCookie("token", { maxAge: 0 })
       .clearCookie("token", {
@@ -9,5 +9,5 @@ const doLogout = (req, res) => {
       .send({ success: true, message: "logout successful"});
   };
   
-  module.exports = doLogout;
+
   

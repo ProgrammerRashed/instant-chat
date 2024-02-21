@@ -1,6 +1,6 @@
-const User = require("../../../models/User")
+import User from "../../../models/User.js"
 
-const getAllFriends = async (req, res, next)=>{
+export const getAllFriends = async (req, res, next)=>{
 
     try {
         const activeUserId = req.user.id 
@@ -12,5 +12,3 @@ const getAllFriends = async (req, res, next)=>{
 
 
 }
-
-module.exports = getAllFriends

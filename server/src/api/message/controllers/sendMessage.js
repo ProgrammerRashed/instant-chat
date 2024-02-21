@@ -1,8 +1,8 @@
-const Conversation = require("../../../models/Conversation");
-const Message = require("../../../models/Message");
-const {io} = require("../../../socket/socket.js")
-const {testData} = require("../../../socket/socket");
-const sendMessage = async (req, res, next) => {
+import Conversation from "../../../models/Conversation.js";
+import Message from "../../../models/Message.js";
+import { io } from "../../../socket/socket.js";
+
+export const sendMessage = async (req, res, next) => {
   try {
     const { message } = req.body;
     const receiverId = req.params.id;
@@ -31,7 +31,6 @@ const sendMessage = async (req, res, next) => {
     await conversation.save();
     // SOCKET IO FUNCTIONALITY WILL GO HERE
 
-    console.log("test", testData )
     if (receiverSocketId) {
 
 
@@ -43,5 +42,3 @@ const sendMessage = async (req, res, next) => {
     next(err);
   }
 };
-
-module.exports = sendMessage;

@@ -1,22 +1,21 @@
-const cookieParser = require("cookie-parser");
-const cors = require('cors');
-const express = require("express");
-const { LOCAL_CLIENT, LOCAL_CLIENT_SECOND, CLIENT_FIREBASE, CLIENT_VERCEL } = require("../config/defaults");
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
 
-const applyMiddleware = (app)=>{
+
+
+export const applyMiddleware = (app)=>{
     
 // middleware
 app.use(cors({
     origin: [
-        LOCAL_CLIENT,
-        CLIENT_FIREBASE,
-        CLIENT_VERCEL,
-        LOCAL_CLIENT_SECOND
+        process.env.LOCAL_CLIENT,
+        process.env.LOCAL_CLIENT_SECOND,
+        process.env.CLIENT_VERCEL,
+        process.env.CLIENT_FIREBASE,
     ],
     credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
 }
-
-module.exports = applyMiddleware
