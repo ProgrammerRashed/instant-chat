@@ -1,5 +1,5 @@
-
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const config = {
   LOCAL_CLIENT: process.env.LOCAL_CLIENT,
@@ -8,4 +8,4 @@ const config = {
   CLIENT_FIREBASE: process.env.CLIENT_FIREBASE,
 };
 
-module.exports = Object.freeze(config);
+export default Object.freeze(config);
