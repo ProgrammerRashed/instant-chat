@@ -1,6 +1,6 @@
 import Conversation from "../../../models/Conversation.js";
 import Message from "../../../models/Message.js";
-import { io } from "../../../socket/socket.js";
+import { getReceiverSocketId, io } from "../../../socket/socket.js";
 
 export const sendMessage = async (req, res, next) => {
   try {
@@ -30,7 +30,7 @@ export const sendMessage = async (req, res, next) => {
     conversation.messages.push(newMessage._id);
     await conversation.save();
     // SOCKET IO FUNCTIONALITY WILL GO HERE
-
+    const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {
 
 

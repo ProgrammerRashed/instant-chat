@@ -12,6 +12,7 @@ import useConversation from "@/hooks/useConversation";
 import { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
 import useSendMessage from "@/hooks/useSendMessage";
+import Chats from "./Chats";
 
 
 const ChatBox = () => {
@@ -19,6 +20,7 @@ const ChatBox = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const { loading, sendMessage } = useSendMessage();
+
 
   const handleFormSubmit = async (e) => {
 		e.preventDefault();
@@ -65,17 +67,10 @@ const ChatBox = () => {
             </div>
           </div>
 
+
+          {/* CHATS */}
           <div className="overflow-y-auto px-5 py-3 text-slate-700">
-            <MessageBoxComp
-              title="Polash"
-              text="Hello, From Polash"
-              replyButton={true}
-              alt={"profile"}
-              date={new Date()}
-              avatar={
-                "https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-              }
-            />
+            <Chats/>
           </div>
 
           <form onSubmit={handleFormSubmit} className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
