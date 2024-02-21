@@ -2,16 +2,25 @@
 
 import { MessageBox } from "react-chat-elements";
 
-const MessageBoxComp = ({ title, text, avatar,date,alt,replyButton }) => {
+const MessageBoxComp = ({
+  message,
+  title,
+  text,
+  avatar,
+  date,
+  alt,
+  replyButton,
+}) => {
+  console.log('this is message', message);
   return (
     <div className=" tex-white">
       <MessageBox
         position={"left"}
-        type={"text"}       
-        title={title}
-        text={text}
+        type={"text"}
+        title={message.senderId.name}
+        text={message.message}
         avatar={avatar}
-        date={date}
+        date={message.createdAt}
         alt={alt}
         replyButton={replyButton}
       />
