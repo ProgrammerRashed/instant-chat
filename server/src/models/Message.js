@@ -1,22 +1,24 @@
-const { model, Schema, default: mongoose } = require("mongoose");
+import mongoose from "mongoose";
+
+const { model, Schema } = mongoose;
 
 const MessageSchema = new Schema({
   senderId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    require: true,
+    required: true,
   },
   receiverId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    require: true,
+    required: true,
   },
   message: {
     type: String,
-    require: true,
+    required: true,
   },
-}, {timestamps: true});
+}, { timestamps: true });
 
 const Message = model("Message", MessageSchema);
 
-module.exports = Message;
+export default Message;

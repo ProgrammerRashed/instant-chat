@@ -1,7 +1,6 @@
-const Conversation = require("../../../models/Conversation");
-const Message = require("../../../models/Message");
+import Conversation from "../../../models/Conversation.js"
 
-const getMessages = async (req, res, next) => {
+export const getMessages = async (req, res, next) => {
   try {
     const userToChat = req.params.id;
     const senderId = req.user.id;
@@ -23,4 +22,3 @@ const getMessages = async (req, res, next) => {
   }
 };
 
-module.exports = getMessages;

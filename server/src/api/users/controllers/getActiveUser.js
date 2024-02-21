@@ -1,7 +1,5 @@
-const bcryptjs = require("bcryptjs");
-const User = require("../../../models/User");
 
-const getActiveUser = async (req, res, next) => {
+export const getActiveUser = async (req, res, next) => {
   try {
     const activeUser = {
         id: req.user.id,
@@ -16,4 +14,3 @@ const getActiveUser = async (req, res, next) => {
   }
 };
 
-module.exports = getActiveUser;

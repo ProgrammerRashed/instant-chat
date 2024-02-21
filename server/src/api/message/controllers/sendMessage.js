@@ -1,13 +1,14 @@
-const Conversation = require("../../../models/Conversation");
-const Message = require("../../../models/Message");
-const { getReceiverSocketId, io } = require("../../../socket/socket");
+import Conversation from "../../../models/Conversation.js";
+import Message from "../../../models/Message.js";
+import { getReceiverSocketId, io } from "../../../socket/socket.js";
 
-const sendMessage = async (req, res, next) => {
+export const sendMessage = async (req, res, next) => {
   try {
     const { message } = req.body;
     const receiverId = req.params.id;
     const senderId = req.user.id;
 
+    console.log("message", message, "receiverId", receiverId, "senderId", senderId)
     let conversation = await Conversation.findOne({
       participants: { $all: [senderId, receiverId] },
     });
@@ -31,6 +32,8 @@ const sendMessage = async (req, res, next) => {
     // SOCKET IO FUNCTIONALITY WILL GO HERE
     const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {
+
+
       // io.to(<socket_id>).emit() used to send events to specific client
       io.to(receiverSocketId).emit("newMessage", newMessage);
     }
@@ -39,5 +42,3 @@ const sendMessage = async (req, res, next) => {
     next(err);
   }
 };
-
-module.exports = sendMessage;
