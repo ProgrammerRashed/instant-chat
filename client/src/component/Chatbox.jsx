@@ -11,19 +11,26 @@ import EmptyChatBox from "./EmptyChatBox";
 import useConversation from "@/hooks/useConversation";
 import { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
+import useSendMessage from "@/hooks/useSendMessage";
+
 
 const ChatBox = () => {
   const { selectedConversation } = useConversation();
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const { loading, sendMessage } = useSendMessage();
 
-  console.log("onChatBox", selectedConversation);
+  const handleFormSubmit = async (e) => {
+		e.preventDefault();
+		if (!message) return;
+		await sendMessage(message);
+		setMessage("");
+	};
 
   const handleEmojiOpen = () => {
     setOpen(!open);
   };
 
-  const [inputStr, setInputStr] = useState("");
-  console.log(inputStr);
 
   const onEmojiClick = (event, emojiObject) => {
     setInputStr((prevInput) => prevInput + emojiObject.emoji);
@@ -71,7 +78,7 @@ const ChatBox = () => {
             />
           </div>
 
-          <form className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
+          <form onSubmit={handleFormSubmit} className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
             <div className="flex w-full items-center gap-2">
               <div>
                 <label
@@ -95,17 +102,18 @@ const ChatBox = () => {
                   type="text"
                   name="textField"
                   placeholder="write message"
-                  value={inputStr}
-                  onChange={(e) => setInputStr(e.target.value)}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="text-sm rounded-lg outline-none block w-[67vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"
                 />
 
-                <div
+                <button
+                type="button"
                   onClick={handleEmojiOpen}
                   className="absolute cursor-pointer right-3 bottom-2"
                 >
                   <BsEmojiSmile className="text-[22px] text-white" />
-                </div>
+                </button>
               </div>
 
               <div>
