@@ -5,7 +5,6 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 import { FaRegImage } from "react-icons/fa6";
 import "react-chat-elements/dist/main.css";
 import { BsEmojiSmile } from "react-icons/bs";
-
 import MessageBoxComp from "./MessageBoxComp";
 import EmptyChatBox from "./EmptyChatBox";
 import useConversation from "@/hooks/useConversation";
@@ -35,6 +34,8 @@ const ChatBox = () => {
 
 
   const onEmojiClick = (event, emojiObject) => {
+    console.log("Emoji Clicked:", emojiObject);
+    console.log("Event:", event);
     setInputStr((prevInput) => prevInput + emojiObject.emoji);
   };
 
@@ -75,12 +76,9 @@ const ChatBox = () => {
 
           <form onSubmit={handleFormSubmit} className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
             <div className="flex w-full items-center gap-2">
-              <div>
-                <label
-                  className="h-[42px] w-[42px] bg-[#0B1114]  mx-auto rounded-sm"
-                  htmlFor="attachment"
-                >
-                  <FaRegImage className="mt-2 text-white text-xl " />
+              <div className="h-[41px] w-[42px] bg-[#0B1114]  rounded-md">
+                <label className=" mx-auto rounded-sm" htmlFor="attachment">
+                  <FaRegImage className="mt-3 ml- mx-auto text-white text-xl " />
                 </label>
                 <input
                   className="hidden"
@@ -97,6 +95,7 @@ const ChatBox = () => {
                   type="text"
                   name="textField"
                   placeholder="write message"
+
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="text-sm rounded-lg outline-none block w-[67vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"

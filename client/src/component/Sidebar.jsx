@@ -70,7 +70,7 @@ const Sidebar = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-darkBlue  z-[9999999]  scrollStyle w-[388px] h-full fixed overflow-y-auto text-white">
+        <div className="bg-darkBlue  z-[9999999]  scrollStyle w-full lg:w-[388px]  h-full fixed overflow-y-auto text-white">
           {/* headers */}
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">

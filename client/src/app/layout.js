@@ -24,6 +24,8 @@ export default function RootLayout({ children }) {
                 </div>
                 <div className="col-span-3">{children}</div>
               </div>
+
+              {/* {children} */}
             </div>
           </SocketContextProvider>
         </DataContextProvider>
