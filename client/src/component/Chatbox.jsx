@@ -13,25 +13,22 @@ import EmojiPicker from "emoji-picker-react";
 import useSendMessage from "@/hooks/useSendMessage";
 import Chats from "./Chats";
 
-
 const ChatBox = () => {
   const { selectedConversation } = useConversation();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const { loading, sendMessage } = useSendMessage();
 
-
   const handleFormSubmit = async (e) => {
-		e.preventDefault();
-		if (!message) return;
-		await sendMessage(message);
-		setMessage("");
-	};
+    e.preventDefault();
+    if (!message) return;
+    await sendMessage(message);
+    setMessage("");
+  };
 
   const handleEmojiOpen = () => {
     setOpen(!open);
   };
-
 
   const onEmojiClick = (event, emojiObject) => {
     console.log("Emoji Clicked:", emojiObject);
@@ -68,13 +65,15 @@ const ChatBox = () => {
             </div>
           </div>
 
-
           {/* CHATS */}
           <div className="overflow-y-auto px-5 py-3 text-slate-700">
-            <Chats/>
+            <Chats />
           </div>
 
-          <form onSubmit={handleFormSubmit} className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center">
+          <form
+            onSubmit={handleFormSubmit}
+            className="fixed  bottom-0 p-3 w-full bg-[#121C22] shadow-lg flex flex-row gap-2 items-center"
+          >
             <div className="flex w-full items-center gap-2">
               <div className="h-[41px] w-[42px] bg-[#0B1114]  rounded-md">
                 <label className=" mx-auto rounded-sm" htmlFor="attachment">
@@ -95,14 +94,13 @@ const ChatBox = () => {
                   type="text"
                   name="textField"
                   placeholder="write message"
-
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="text-sm rounded-lg outline-none block w-[67vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"
+                  className="text-sm rounded-lg outline-none block w-[66vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"
                 />
 
                 <button
-                type="button"
+                  type="button"
                   onClick={handleEmojiOpen}
                   className="absolute cursor-pointer right-3 bottom-2"
                 >
