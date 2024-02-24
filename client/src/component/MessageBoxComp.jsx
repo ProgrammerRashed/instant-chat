@@ -1,27 +1,27 @@
 "use client";
 
+import { useDataContext } from "@/context/DataContext";
 import { MessageBox } from "react-chat-elements";
 
 const MessageBoxComp = ({
   message,
-  title,
-  text,
-  avatar,
-  date,
-  alt,
   replyButton,
 }) => {
-  console.log('this is message', message);
+  const { loading, currentUser } = useDataContext();
+  const fromMe = message.senderId._id === currentUser.id;
+
+  console.log(currentUser)
+ console.log(fromMe)
   return (
     <div className=" tex-white">
       <MessageBox
-        position={"left"}
+        position={`${fromMe ? "right" : "left"}`}
         type={"text"}
         title={message.senderId.name}
         text={message.message}
-        avatar={avatar}
+        avatar={`${fromMe ? `${message.senderId.image}` : `${message.receiverId.image}`}`}
         date={message.createdAt}
-        alt={alt}
+        alt={message.message}
         replyButton={replyButton}
       />
     </div>

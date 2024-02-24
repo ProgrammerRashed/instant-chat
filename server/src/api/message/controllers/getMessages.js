@@ -11,7 +11,7 @@ export const getMessages = async (req, res, next) => {
       path: 'messages',
       populate: {
           path: 'senderId receiverId',
-          select: 'name email',
+          select: 'name email image',
       },
   });
 
