@@ -16,14 +16,16 @@ import Chats from "./Chats";
 const ChatBox = () => {
   const { selectedConversation } = useConversation();
   const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState("");
   const { loading, sendMessage } = useSendMessage();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const message = form.messageContent.value;
+
     if (!message) return;
     await sendMessage(message);
-    setMessage("");
+    form.reset()
   };
 
   const handleEmojiOpen = () => {
@@ -92,10 +94,8 @@ const ChatBox = () => {
               <div className="relative">
                 <input
                   type="text"
-                  name="textField"
+                  name="messageContent"
                   placeholder="write message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
                   className="text-sm rounded-lg outline-none block w-[66vw] py-2.5 px-3 bg-[#0B1114] placeholder-gray-400 text-white border border-[#0B1114] focus:outline-0 focus:border-[#3B82F6]"
                 />
 

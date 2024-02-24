@@ -12,12 +12,13 @@ import useConversation from "@/hooks/useConversation";
 import "./scroll.css";
 import { IoLogOutOutline } from "react-icons/io5";
 import Link from "next/link";
+import SidebarFriend from "./SidebarFriend";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [sidebarFriends, setSidebarFriends] = useState([]);
   const { loading, currentUser } = useDataContext();
-  const { setSelectedConversation } = useConversation();
+
   console.log(currentUser);
 
   useEffect(() => {
@@ -167,38 +168,10 @@ const Sidebar = () => {
           <div className="mt- px-2">
             <ul className="flex flex-col justify-start mb-5">
               {sidebarFriends.length ? (
-                sidebarFriends.map((item) => (
-                  <button
-                    key={item._id}
-                    onClick={() => {
-                      setSelectedConversation(item);
-                    }}
-                  >
-                    <li className="hover:bg-slate-800 border-b border-slate-700 rounded-md duration-300 py-3 px-2">
-                      <div className="flex cursor-pointer items-center gap-3">
-                        <Image
-                          width={50}
-                          height={50}
-                          className="rounded-full"
-                          src={item.image}
-                          alt="user image"
-                        />
-
-                        <div className="w-[550px] text-left">
-                          <h1 className="font-medium">{item.name}</h1>
-                          <p className="text-[13px] text-slate-300">
-                            Hello Dear, How Are You..?
-                          </p>
-                        </div>
-                        <div className="ml-1">
-                          <p className="mb-1 text-[14px]">12.55 </p>
-                          <p className="h-[17px] text-[12px] mx-auto text-center w-[18px] rounded-full bg-blue-700 text-white">
-                            1
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </button>
+                sidebarFriends.map((singleSidebarFriend) => (
+                  <div key={singleSidebarFriend._id}>
+                    <SidebarFriend singleSidebarFriend={singleSidebarFriend} />
+                  </div>
                 ))
               ) : (
                 <div className="flex justify-center">
