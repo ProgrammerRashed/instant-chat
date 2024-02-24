@@ -18,14 +18,7 @@ export default function RootLayout({ children }) {
         <DataContextProvider>
           <SocketContextProvider>
             <div className="app">
-              <div className="grid grid-cols-1 lg:grid-cols-4">
-                <div className="col-span-1">
-                  <Sidebar />
-                </div>
-                <div className="col-span-3">{children}</div>
-              </div>
-
-              {/* {children} */}
+              {children}
             </div>
           </SocketContextProvider>
         </DataContextProvider>

@@ -117,7 +117,7 @@ const LoginPage = () => {
             </div>
             <div className="w-full mt-12 flex justify-center">
               <span className=" mt-2 mr-1.5"> Don't have an account?</span>
-              <Link href="/SignUp">
+              <Link href="/signup">
                 <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                   <span>SignUp</span>
                 </button>
