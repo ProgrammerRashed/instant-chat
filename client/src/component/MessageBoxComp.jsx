@@ -29,7 +29,6 @@ const MessageBoxComp = ({ message, replyButton }) => {
     }
   }, [message, selectedConversation]);
 
-  console.log(message)
 
   const data = {
     isOwnMessage: isOwnMessage,
