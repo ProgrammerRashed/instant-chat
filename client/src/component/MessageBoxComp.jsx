@@ -1,25 +1,51 @@
-"use client";
-
 import { useDataContext } from "@/context/DataContext";
+import useConversation from "@/hooks/useConversation";
+import { useEffect, useState } from "react";
 import { MessageBox } from "react-chat-elements";
 
-const MessageBoxComp = ({
-  message,
-  replyButton,
-}) => {
-  const { loading, currentUser } = useDataContext();
-  const fromMe = message.senderId._id === currentUser.id;
+const MessageBoxComp = ({ message, replyButton }) => {
+  const { selectedConversation } = useConversation();
+  const { currentUser } = useDataContext();
 
-  console.log(currentUser)
- console.log(fromMe)
+  const [isOwnMessage, setIsOwnMessage] = useState(null);
+  const [senderAvatar, setSenderAvatar] = useState(null);
+  const [senderName, setSenderName] = useState(null)
+
+  useEffect(() => {
+    if (currentUser) {
+      const isOwnMessage =
+        message.senderId == currentUser.id;
+      setIsOwnMessage(isOwnMessage);
+
+      const senderAvatar = isOwnMessage
+        ? currentUser.image
+        : selectedConversation?.image || null;
+      setSenderAvatar(senderAvatar);
+
+      const detectSender = isOwnMessage
+        ? currentUser.name
+        : selectedConversation?.name || null;
+      setSenderName(detectSender);
+    }
+  }, [message, selectedConversation]);
+
+  console.log(message)
+
+  const data = {
+    isOwnMessage: isOwnMessage,
+    senderId: message.senderId,
+    currentUserId: currentUser.id,
+  };
+  console.log(data);
+
   return (
-    <div className=" tex-white">
+    <div className="">
       <MessageBox
-        position={`${fromMe ? "right" : "left"}`}
-        type={"text"}
-        title={message.senderId.name}
+        position={isOwnMessage ? "right" : "left"}
+        type="text"
+        title={senderName}
         text={message.message}
-        avatar={`${fromMe ? `${message.senderId.image}` : `${message.receiverId.image}`}`}
+        avatar={senderAvatar}
         date={message.createdAt}
         alt={message.message}
         replyButton={replyButton}
